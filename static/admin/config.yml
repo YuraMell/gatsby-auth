@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: erquhart/gatsby-netlify-cms-example #replace with your username/repo
+  repo: YuraMell/gatsby-auth
 
 media_folder: static/assets
 
