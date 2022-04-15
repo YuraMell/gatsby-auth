@@ -1,0 +1,15 @@
+.nav {
+  gap: 10px;
+  display: flex;
+  font-size: 22px;
+}
+
+.a {
+  color: aliceblue;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.active {
+  text-decoration: underline;
+}

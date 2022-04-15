@@ -1,0 +1,9 @@
+.a {
+  text-decoration: none;
+  color: rebeccapurple;
+  width: fit-content;
+}
+
+.a:hover {
+  text-decoration: underline;
+}

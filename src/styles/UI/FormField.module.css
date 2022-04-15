@@ -1,0 +1,18 @@
+.field_block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.label {
+  font-size: 18px;
+}
+
+.input {
+  width: 100%;
+  max-width: 275px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  border: 1px solid gray;
+}
