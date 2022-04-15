@@ -1,20 +1,27 @@
 import { graphql } from 'gatsby';
 import React from 'react';
+import Layout from '../components/layout';
+import Seo from '../components/seo';
+
+import * as styles from '../styles/blog.module.css'
 
 export default function Template({ data }) {
   const { markdownRemark } = data;
   const { frontmatter, html } = markdownRemark;
   return (
-    <div className="blog-post-container">
-      <div className="blog-post">
-        <h1>{frontmatter.title}</h1>
-        <h2>{frontmatter.date}</h2>
-        <div
-          className="blog-post-content"
-          dangerouslySetInnerHTML={{ __html: html }}
-        />
+    <Layout>
+      <Seo title='Single post' />
+      <div className="blog-post-container">
+        <div className={styles.blog_post}>
+          <h1 className={styles.title}>{frontmatter.title}</h1>
+          <i>{frontmatter.date}</i>
+          <div
+            className={styles.blog_post__content}
+            dangerouslySetInnerHTML={{ __html: html }}
+          />
+        </div>
       </div>
-    </div>
+    </Layout>
   );
 }
 
