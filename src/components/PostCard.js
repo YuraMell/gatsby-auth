@@ -13,7 +13,7 @@ const PostCard = ({ path, category, title, content, author }) => {
       <i>{category}</i>
       <p>{content}</p>
       <span>{author}</span>
-      <CustomLink value='Read more' to={`${postPath}/${path}`} />
+      <CustomLink value='Read more' to={`${postPath}${path}`} />
     </div>
   )
 }
