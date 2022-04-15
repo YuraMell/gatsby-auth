@@ -7,6 +7,8 @@ import PostCard from '../components/PostCard'
 import * as styles from '../styles/blog.module.css'
 import { DOMParser } from 'xmldom'
 
+const isBrowser = typeof window !== "undefined"
+
 const BlogPage = ({ data }) => {
   const { nodes } = data.allMarkdownRemark
 
@@ -17,7 +19,6 @@ const BlogPage = ({ data }) => {
     return `${contentSlice}...`
   }
 
-
   return (
     <Layout>
       <Seo title="Blog" />
@@ -27,7 +28,8 @@ const BlogPage = ({ data }) => {
           const { path, title, } = node.frontmatter
           const { html } = node
           const content = parceContentSlice(html)
-          return <PostCard key={index} path={path} category='vvvvv' title={title} content={content} author='aaaaa' />
+          const postPath = isBrowser ? window.location.href + path : ''
+          return <PostCard key={index} path={postPath} category='vvvvv' title={title} content={content} author='aaaaa' />
         }
         )}
       </div>
