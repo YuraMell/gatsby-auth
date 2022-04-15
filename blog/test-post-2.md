@@ -1,5 +1,5 @@
 ---
-path: /test-post-2
+path: /blog/sport/test-post-2
 date: 2022-04-15T08:22:31.839Z
 title: Test post 2
 ---
