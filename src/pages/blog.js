@@ -25,11 +25,11 @@ const BlogPage = ({ data }) => {
       <h1>Hi from the Blog page</h1>
       <div className={styles.post_grid}>
         {nodes.map((node, index) => {
-          const { path, title, } = node.frontmatter
+          const { path, title, category, date } = node.frontmatter
           const { html } = node
           const content = parceContentSlice(html)
-          const postPath = isBrowser ? window.location.href + path : ''
-          return <PostCard key={index} path={postPath} category='vvvvv' title={title} content={content} author='aaaaa' />
+          const postPath = isBrowser ? window.location.origin + path : ''
+          return <PostCard key={index} path={postPath} category={category} title={title} content={content} date={date} author='aaaaa' />
         }
         )}
       </div>
@@ -48,6 +48,8 @@ query PostsQuery {
       frontmatter {
         path
         title
+        category
+        date(formatString: "MMMM DD, YYYY")
       }
     }
   }
