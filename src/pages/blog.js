@@ -38,7 +38,7 @@ const BlogPage = ({ data }) => {
       <div className={styles.post_grid}>
         {(categories.includes(selectCategory) ? nodes.filter((node) => node.frontmatter.category === selectCategory) : nodes)
           .map((node, index) => {
-            const { path, title, category, date } = node.frontmatter
+            const { path, title, category, date, author } = node.frontmatter
             const { html } = node
             const content = parceContentSlice(html)
             const postPath = isBrowser ? window.location.origin + path : ''
@@ -49,7 +49,7 @@ const BlogPage = ({ data }) => {
               title={title}
               content={content}
               date={date}
-              author='aaaaa'
+              author={author}
             />
           }
           )}
@@ -70,6 +70,7 @@ query PostsQuery {
         path
         title
         category
+        author
         date(formatString: "MMMM DD, YYYY")
       }
     }
