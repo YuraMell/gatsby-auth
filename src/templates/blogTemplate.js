@@ -9,7 +9,7 @@ import * as styles from '../styles/blog.module.css'
 export default function Template({ data }) {
   const { markdownRemark } = data;
   const { frontmatter, html } = markdownRemark;
-  const { title, date, category } = frontmatter
+  const { title, date, category, author } = frontmatter
 
   return (
     <Layout>
@@ -19,6 +19,7 @@ export default function Template({ data }) {
           <h1 className={styles.title}>{title}</h1>
           <i>{date}</i>
           <h3>{category}</h3>
+          <i>{author}</i>
           <div
             className={styles.blog_post__content}
             dangerouslySetInnerHTML={{ __html: html }}
