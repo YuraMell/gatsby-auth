@@ -1,12 +1,14 @@
 import * as React from 'react'
-import { Link } from "gatsby"
+import netlifyIdentity from 'netlify-identity-widget'
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+import CustomLink from '../components/UI/CustomLink'
 
 const Profile = () => {
 
-  // const userData = JSON.parse(localStorage.getItem('user-data')) ?? { username: '', email: '', password: '' }
+  const username = netlifyIdentity.currentUser()?.user_metadata?.full_name
+  const email = netlifyIdentity.currentUser()?.email
 
   return (
     <Layout>
@@ -14,10 +16,10 @@ const Profile = () => {
       <h1>Hi from the Profile page</h1>
       <h1>Your profile</h1>
       <ul>
-        {/* <li>Name: {userData.username} </li>
-        <li>E-mail: {userData.email} </li> */}
+        <li>Name: {username} </li>
+        <li>E-mail: {email} </li>
       </ul>
-      <Link to="/">Go back to the homepage</Link>
+      <CustomLink to="/" value='Go back to the homepage' />
     </Layout>
   )
 }

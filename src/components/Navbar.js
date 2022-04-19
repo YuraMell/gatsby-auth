@@ -9,17 +9,15 @@ const Navbar = () => {
   const [isIdentity, setIsIdentity] = useState(false)
 
   useEffect(() => {
-    netlifyIdentity.init({})
     if (netlifyIdentity.currentUser()) {
       setIsIdentity(true)
     }
-  }, [])
+  }, [isIdentity])
 
-  const logout = (e) => {
-    e.preventDefault()
-    netlifyIdentity.logout()
+  const logout = () => {
     setIsIdentity(false)
-    navigate(`/login`)
+    netlifyIdentity.logout()
+    navigate(`/`)
   }
 
   return (
