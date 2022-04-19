@@ -23,6 +23,8 @@ const BlogPage = ({ data }) => {
 
   const categories = [...new Set(nodes.map(node => node.frontmatter.category))]
 
+  const filterCategory = (nodes, categories, category) => categories.includes(category) ? nodes.filter((node) => node.frontmatter.category === category) : nodes
+
   return (
     <Layout>
       <Seo title="Blog" />
@@ -36,23 +38,24 @@ const BlogPage = ({ data }) => {
       />
 
       <div className={styles.post_grid}>
-        {(categories.includes(selectCategory) ? nodes.filter((node) => node.frontmatter.category === selectCategory) : nodes)
-          .map((node, index) => {
-            const { path, title, category, date, author } = node.frontmatter
-            const { html } = node
-            const content = parceContentSlice(html)
-            const postPath = isBrowser ? window.location.origin + path : ''
-            return <PostCard
-              key={index}
-              path={postPath}
-              category={category}
-              title={title}
-              content={content}
-              date={date}
-              author={author}
-            />
-          }
-          )}
+        {
+          filterCategory(nodes, categories, selectCategory)
+            .map((node, index) => {
+              const { path, title, category, date, author } = node.frontmatter
+              const { html } = node
+              const content = parceContentSlice(html)
+              const postPath = isBrowser ? window.location.origin + path : ''
+              return <PostCard
+                key={index}
+                path={postPath}
+                category={category}
+                title={title}
+                content={content}
+                date={date}
+                author={author}
+              />
+            }
+            )}
       </div>
       <Link to="/">Go back to the homepage</Link>
     </Layout>

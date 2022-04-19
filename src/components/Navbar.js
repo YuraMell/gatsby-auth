@@ -1,30 +1,40 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { navigate } from 'gatsby';
+
 import * as styles from '../styles/Navbar.module.css'
 import CustomNavLink from './UI/CustomNavLink'
+import netlifyIdentity from 'netlify-identity-widget'
 
 const Navbar = () => {
-  // const logout = (e) => {
-  //   e.preventDefault()
-  //   localStorage.removeItem('user-data')
-  //   navigate(`/login`)
-  // }
+  const [isIdentity, setIsIdentity] = useState(false)
 
-  // const userData = JSON.parse(localStorage.getItem('user-data'))
+  useEffect(() => {
+    netlifyIdentity.init({})
+    if (netlifyIdentity.currentUser()) {
+      setIsIdentity(true)
+    }
+  }, [])
+
+  const logout = (e) => {
+    e.preventDefault()
+    netlifyIdentity.logout()
+    setIsIdentity(false)
+    navigate(`/login`)
+  }
 
   return (
     <nav className={styles.nav}>
       <CustomNavLink to='/' title='Home' />
       <CustomNavLink to='/about' title='About' />
       <CustomNavLink to='/blog' title='Blog' />
-      {/* {userData && <CustomNavLink to='/profile' title='Profile' />}
-      {!userData && <CustomNavLink to='/login' title='Login' />}
-      {userData && <a
-        href='/'
+      {isIdentity && <CustomNavLink to='/profile' title='Profile' />}
+      {!isIdentity && <CustomNavLink to='/login' title='Login' />}
+      {isIdentity && <span
         className={styles.a}
         onClick={logout}
       >
         Logout
-      </a>} */}
+      </span>}
     </nav>
   )
 }

@@ -1,23 +1,21 @@
-import * as React from 'react'
+import React, { useEffect } from "react"
+
 import { Link } from "gatsby"
+import netlifyIdentity from 'netlify-identity-widget'
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-// import Form from '../components/UI/Form'
 
 const Login = () => {
-
-  // const handleSubmit = (event, formData) => {
-  //   event.preventDefault()
-  //   window.localStorage.setItem('user-data', JSON.stringify(formData))
-  //   navigate(`/profile`)
-  // }
+  useEffect(() => {
+    netlifyIdentity.init({})
+  })
 
   return (
     <Layout>
       <Seo title="Login" />
       <h1>Log in</h1>
-      {/* <Form onSubmit={handleSubmit} /> */}
+      <button onClick={() => netlifyIdentity.open()}>Log in</button>
       <Link to="/">Go back to the homepage</Link>
     </Layout>
   )
