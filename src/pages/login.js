@@ -74,7 +74,7 @@ const Login = () => {
       >
         <input name="name" placeholder="Your Name" type="text" />
         <input name="email" placeholder="name@name.com" type="email" />
-        <input name="phone" type="text" />
+        <input name="phone" type="text" placeholder="phone" value='phone' />
         <button>Send</button>
       </form>
       <CustomLink to="/" value='Go back to the homepage' />
