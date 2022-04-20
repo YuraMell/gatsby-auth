@@ -18,7 +18,7 @@ const Login = () => {
   })
 
   netlifyIdentity.on('close', (_) => {
-    navigate('/')
+    navigate('/login')
   })
 
   function encode(data) {
@@ -75,7 +75,7 @@ const Login = () => {
         <input name="name" placeholder="Your Name" type="text" />
         <input name="email" placeholder="name@name.com" type="email" />
         <input name="phone" type="text" placeholder="phone" />
-        <button>Send</button>
+        <button type="submit">Send</button>
       </form>
       <CustomLink to="/" value='Go back to the homepage' />
     </Layout>
