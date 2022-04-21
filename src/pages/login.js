@@ -21,7 +21,7 @@ const Login = () => {
     <Layout>
       <Seo title="Login" />
       <h1>Log in</h1>
-      {/* <div className={styles.form_block}>
+      <div className={styles.form_block}>
         <span
           className={styles.button}
           onClick={() => netlifyIdentity.open('login')}
@@ -34,7 +34,7 @@ const Login = () => {
         >
           Sign up
         </span>
-      </div> */}
+      </div>
       <form
         name="contact-form"
         method="post"
