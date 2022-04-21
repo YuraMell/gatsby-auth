@@ -40,7 +40,7 @@ const Login = () => {
         method="post"
         data-netlify="true"
       >
-        <input type="hidden" name="contact-form" value="contact" />
+        <input name="contact-form" type="hidden" value="contact-form" />
         <input name="name" type="text" placeholder="Your Name" />
         <input name="email" type="email" placeholder="name@name.com" />
         <input name="phone" type="text" placeholder="phone" />
